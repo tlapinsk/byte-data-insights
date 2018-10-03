@@ -8,9 +8,11 @@ There are 2 folders in this project
 - [data](https://github.com/tlapinsk/byte-data-insights/tree/master/data)
 - [notebooks](https://github.com/tlapinsk/byte-data-insights/tree/master/notebooks)
 
-Data holds raw items purchased data provided for this project and "fake" product data used to exemplify how a second table could improve the quality of the original insights.
+The data folder holds holds the items purchased data and "fake" product data used to exemplify how a second table could improve the quality of the original insights.
 
-This README file serves as a project write-up, details my thought process, and potential improvements in a Production setting. 
+The notebooks folder holders iPython notebooks, where I have curated my insights and written a small set of functions to process CSV files into Postgres.
+
+This README file serves as a project write-up, details my thought process, and also includes potential improvements for a Production setting. 
 
 The Assignment
 ---
@@ -25,7 +27,7 @@ Tasks:
 * Build a tool that can take in additional data as it becomes available and improve quality of the insights from above
 
 ### Dependencies  
-This assignment requires:
+This project requires:
 * Python
 * Postgres
 * Jupyter Notebook
@@ -40,7 +42,7 @@ This assignment requires:
 
 ### `Insights.ipynb`  
 
-`Insights.ipynb` generates a few basic insights into the `items_purchased.csv`. There are more than three insights generated in the file - with the three most important shown below:
+`Insights.ipynb` generates a few basic insights into the `items_purchased.csv`. There are more than three insights generated in the file - the three most important shown below:
 
 **Top 10 Selling Products**  
 In the Insights file, I have generated the ~300 top selling products. To make this more concise, I have shortened it to 10 for the write-up. I'm curious what Product 4061 is.
@@ -105,7 +107,7 @@ The Data Feeder notebook serves as a small introduction for loading a database (
 
 Two important notes must be made about the data loading mechanism.
 1. One script is built to create a table for the first time
-2. The second is built to load data incrementally (e.g. feed the data) as it is generated. It will add it to the `purchases` or `product_info` table depending on the csv provided
+2. The second is built to load data incrementally (e.g. feed the data) as it is generated. It will add it to the `purchases` or `product_info` table depending on the CSV provided
 
 Note: The second script utilizes a `copy_from` method instead of inserting the data. This is the recommended solution for loading data from a CSV file into Postgres using psycopg2.
 
@@ -114,7 +116,7 @@ Below are some key takeaways from this portion of the assignment
 
 - Over time, as more data is added to the `purchases` table, we will be able to see trends over time. For example, how do things fluctuate month to month? Does seasonality make a difference in purchasing behavior?
 - The `product_info` table serves as a very small example of extensibility from the `purchases` table. If we were to setup a data warehouse, I would imagine there being a whole range of tables that extended insights from the `purchases` table
-- The chart generated is a small taste of one piece to a larger dashboard that could be built. This would allow business users to track KPIs and the like, most likely from a web based product
+- The chart generated is a small taste of one piece to a larger dashboard that could be built. This would allow business users to track KPIs and the like, most likely in the form of a web based product
 - The tool does not feel complete. As this is a small assignment, there is a lot of room for improvement. See the **Potential Improvements** section for more details
 
 ## Running the Notebooks 
@@ -140,7 +142,7 @@ Please ensure you have Postgres running locally with a database named `postgres`
 
 Assuming you have already cloned the repository, unzipped the `items_purchased.tar.xz`, and have Jupyter Notebook running.
 
-Open `Data Feeder.ipynb` and replace your Postgres username where necessary (one in each cell)
+Open `Data Feeder.ipynb` and replace your Postgres username where necessary (one in each cell).
 
 You should then be able to Run All cells and monitor Postgres to see the tables being created / updated.
 
@@ -148,19 +150,18 @@ As a note, the incremental load will dump the same data twice into the table sin
 
 
 
-## Potential Improvements  
-The insights and tool provided are small examples, that by no means would be run in Production. They are helpful in providing theoretical examples and potential programming style. 
+## Potential Improvements   
+The insights and tool provided are small examples, that by no means would be run in Production. They are helpful in providing examples of how I would load these CSVs into a database (assuming the CSV lives locally on my computer).
 
-**Insights**
+**Insights**  
 - Create front end web interface and dashboard for users
 - Explore Plotly or other similar tools to analyze data
 - Explore further insights from a larger Datawarehouse setting
 
-
-**Data Feeder**
+**Data Feeder**  
 In a Production setting I would propose the following improvements:
 - Run an S3 bucket to host CSV files
-- Upon new CSV files being generated, fire AWS Lambda function to feed CSV file into Postgres (or any other backend)
+- Upon new CSV files being dumped into S3, fire AWS Lambda function to feed CSV file into Postgres (or any other database)
 - OR, assuming APIs endpoints are built, tap into these APIs on regular intervals
 - OR, assuming other databases host Sales data, create ETL Mappings to load data into a Datewarehouse / Data Lake incrementally
 
