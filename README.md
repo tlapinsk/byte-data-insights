@@ -4,12 +4,12 @@ Overview
 ---
 This repository contains files for a short assignment analyzing Byte Foods items purchased data and a tool to further extend these insights.
 
-There are 2 folders in this project
+There are 3 folders in this project
 - [assets](https://github.com/tlapinsk/byte-data-insights/tree/master/assets)
 - [data](https://github.com/tlapinsk/byte-data-insights/tree/master/data)
 - [notebooks](https://github.com/tlapinsk/byte-data-insights/tree/master/notebooks)
 
-Assets folder holds any images needed for the project.
+The assets folder holds any images needed for the project.
 
 The data folder holds holds the items purchased data and "fake" product data used to exemplify how a second table could improve the quality of the original insights.
 
@@ -120,11 +120,11 @@ Example of potential design around the `items_purchased` table. Exemplifies high
 ![alt text](https://github.com/tlapinsk/byte-data-insights/blob/master/assets/Table%20Design.png "Table Design Diagram")
 
 **Key Takeaways**  
-Below are some key takeaways from this portion of the assignment
+Below are some key takeaways from this portion of the assignment:
 
 - Over time, as more data is added to the `purchases` table, we will be able to see trends over time. For example, how do things fluctuate month to month? Does seasonality make a difference in purchasing behavior?
-- The `product_info` table serves as a very small example of extensibility from the `purchases` table. If we were to setup a data warehouse, I would imagine there being a whole range of tables that extended insights from the `purchases` table
-- The chart generated is a small taste of one piece to a larger dashboard that could be built. This would allow business users to track KPIs and the like, most likely in the form of a web based product
+- The `product_info` table serves as a very small example of extensibility from the `purchases` table. If we were to setup a data warehouse, I would imagine there being a whole range of tables that extended insights from the `purchases` table. The design diagram above helps illustrate this
+- The chart generated at the end of the notebook is a small taste of one piece to a larger dashboard that could be built. This would allow business users to track KPIs and the like
 - The tool does not feel complete. As this is a small assignment, there is a lot of room for improvement. See the **Potential Improvements** section for more details
 
 ## Running the Notebooks  
@@ -156,10 +156,8 @@ You should then be able to Run All cells and monitor Postgres to see the tables 
 
 As a note, the incremental load will dump the same data twice into the table since there is no new data provided. It is merely an example of how to load data incrementally.
 
-
-
 ## Potential Improvements  
-The insights and tool provided are small examples, that by no means would be run in Production. They are helpful in providing examples of how I would load these CSVs into a database (assuming the CSV lives locally on my computer).
+The insights and tool provided are small examples, that by no means would be run in Production. They are helpful in providing examples of how I would load these CSVs into a database (assuming the CSVs lives locally on my computer).
 
 **Insights**  
 - Create front end web interface and dashboard for users
@@ -172,4 +170,3 @@ In a Production setting I would propose the following improvements:
 - Upon new CSV files being dumped into S3, fire AWS Lambda function to feed CSV file into Postgres (or any other database)
 - OR, assuming APIs endpoints are built, tap into these APIs on regular intervals
 - OR, assuming other databases host Sales data, create ETL Mappings to load data into a Datewarehouse / Data Lake incrementally
-
