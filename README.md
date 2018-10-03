@@ -5,8 +5,11 @@ Overview
 This repository contains files for a short assignment analyzing Byte Foods items purchased data and a tool to further extend these insights.
 
 There are 2 folders in this project
+- [assets]()
 - [data](https://github.com/tlapinsk/byte-data-insights/tree/master/data)
 - [notebooks](https://github.com/tlapinsk/byte-data-insights/tree/master/notebooks)
+
+Assets folder holds any images needed for the project.
 
 The data folder holds holds the items purchased data and "fake" product data used to exemplify how a second table could improve the quality of the original insights.
 
@@ -110,6 +113,11 @@ Two important notes must be made about the data loading mechanism.
 2. The second is built to load data incrementally (e.g. feed the data) as it is generated. It will add it to the `purchases` or `product_info` table depending on the CSV provided
 
 Note: The second script utilizes a `copy_from` method instead of inserting the data. This is the recommended solution for loading data from a CSV file into Postgres using psycopg2.
+
+**Table Design**
+Example of potential design around the `items_purchased` table. Exemplifies highly extensible model that is possible and great potential for data analysis.
+
+
 
 **Key Takeaways**  
 Below are some key takeaways from this portion of the assignment
