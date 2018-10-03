@@ -114,7 +114,7 @@ Two important notes must be made about the data loading mechanism.
 
 Note: The second script utilizes a `copy_from` method instead of inserting the data. This is the recommended solution for loading data from a CSV file into Postgres using psycopg2.
 
-**Table Design**
+**Table Design**  
 Example of potential design around the `items_purchased` table. Exemplifies highly extensible model that is possible and great potential for data analysis.
 
 ![alt text](https://github.com/tlapinsk/byte-data-insights/blob/master/assets/Table%20Design.png "Table Design Diagram")
@@ -127,7 +127,7 @@ Below are some key takeaways from this portion of the assignment
 - The chart generated is a small taste of one piece to a larger dashboard that could be built. This would allow business users to track KPIs and the like, most likely in the form of a web based product
 - The tool does not feel complete. As this is a small assignment, there is a lot of room for improvement. See the **Potential Improvements** section for more details
 
-## Running the Notebooks 
+## Running the Notebooks  
 
 ### `Insights.ipynb`  
 Details for running the notebook below:
@@ -158,7 +158,7 @@ As a note, the incremental load will dump the same data twice into the table sin
 
 
 
-## Potential Improvements   
+## Potential Improvements  
 The insights and tool provided are small examples, that by no means would be run in Production. They are helpful in providing examples of how I would load these CSVs into a database (assuming the CSV lives locally on my computer).
 
 **Insights**  
