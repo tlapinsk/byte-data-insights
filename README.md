@@ -10,7 +10,7 @@ There are 2 folders in this project
 
 Data holds raw items purchased data provided for this project and "fake" product data used to exemplify how a second table could improve the quality of the original insights.
 
-This README file describes how to best preview the project and run the notebooks.
+This README file serves as a project write-up, details my thought process, and potential improvements in a Production setting. 
 
 The Assignment
 ---
@@ -43,7 +43,7 @@ This assignment requires:
 `Insights.ipynb` generates a few basic insights into the `items_purchased.csv`. There are more than three insights generated in the file - with the three most important shown below:
 
 **Top 10 Selling Products**  
-In the Insights file, I have generated the ~300 top selling products. For brevities sake, I have shortened it to 10 for the write-up. I'm curious what Product 4061 is.
+In the Insights file, I have generated the ~300 top selling products. To make this more concise, I have shortened it to 10 for the write-up. I'm curious what Product 4061 is.
 
 | product_id | count |   
 |------------|-------|
@@ -107,15 +107,17 @@ Two important notes must be made about the data loading mechanism.
 1. One script is built to create a table for the first time
 2. The second is built to load data incrementally (e.g. feed the data) as it is generated. It will add it to the `purchases` or `product_info` table depending on the csv provided
 
+Note: The second script utilizes a `copy_from` method instead of inserting the data. This is the recommended solution for loading data from a CSV file into Postgres using psycopg2.
+
 **Key Takeaways**  
 Below are some key takeaways from this portion of the assignment
 
 - Over time, as more data is added to the `purchases` table, we will be able to see trends over time. For example, how do things fluctuate month to month? Does seasonality make a difference in purchasing behavior?
-- The `product_info` table serves as a very small example of extensibility from the `purchases` table. If we were to setup a data warehouse, I would imagine there being a whole range of tables that extended insights from the `purchases` table.
+- The `product_info` table serves as a very small example of extensibility from the `purchases` table. If we were to setup a data warehouse, I would imagine there being a whole range of tables that extended insights from the `purchases` table
 - The chart generated is a small taste of one piece to a larger dashboard that could be built. This would allow business users to track KPIs and the like, most likely from a web based product
 - The tool does not feel complete. As this is a small assignment, there is a lot of room for improvement. See the **Potential Improvements** section for more details
 
-## Notebook Details   
+## Running the Notebooks 
 
 ### `Insights.ipynb`  
 Details for running the notebook below:
@@ -136,9 +138,9 @@ Details for running the notebook below:
 
 Please ensure you have Postgres running locally with a database named `postgres` loaded.
 
-Assuming you have already cloned the repository and have Jupyter Notebook running.
+Assuming you have already cloned the repository, unzipped the `items_purchased.tar.xz`, and have Jupyter Notebook running.
 
-Open `Data Feeder.ipynb` and put your Postgres username where necessary (one in each cell)
+Open `Data Feeder.ipynb` and replace your Postgres username where necessary (one in each cell)
 
 You should then be able to Run All cells and monitor Postgres to see the tables being created / updated.
 
