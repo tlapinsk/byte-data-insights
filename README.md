@@ -5,7 +5,7 @@ Overview
 This repository contains files for a short assignment analyzing Byte Foods items purchased data and a tool to further extend these insights.
 
 There are 2 folders in this project
-- [assets]()
+- [assets](https://github.com/tlapinsk/byte-data-insights/tree/master/assets)
 - [data](https://github.com/tlapinsk/byte-data-insights/tree/master/data)
 - [notebooks](https://github.com/tlapinsk/byte-data-insights/tree/master/notebooks)
 
@@ -117,7 +117,7 @@ Note: The second script utilizes a `copy_from` method instead of inserting the d
 **Table Design**
 Example of potential design around the `items_purchased` table. Exemplifies highly extensible model that is possible and great potential for data analysis.
 
-
+![alt text](https://github.com/tlapinsk/byte-data-insights/blob/master/assets/Table%20Design.png "Table Design Diagram")
 
 **Key Takeaways**  
 Below are some key takeaways from this portion of the assignment
