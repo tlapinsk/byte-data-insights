@@ -124,8 +124,10 @@ Below are some key takeaways from this portion of the assignment:
 
 - Over time, as more data is added to the `purchases` table, we will be able to see trends over time. For example, how do things fluctuate month to month? Does seasonality make a difference in purchasing behavior?
 - The `product_info` table serves as a very small example of extensibility from the `purchases` table. If we were to setup a data warehouse, I would imagine there being a whole range of tables that extended insights from the `purchases` table. The design diagram above helps illustrate this
-- The chart generated at the end of the notebook is a small taste of one piece to a larger dashboard that could be built. This would allow business users to track KPIs and the like
 - The tool does not feel complete. As this is a small assignment, there is a lot of room for improvement. See the **Potential Improvements** section for more details
+- The chart generated at the end of the notebook is a small taste of one piece to a larger dashboard that could be built. This would allow business users to track KPIs and the like. See below
+
+![alt text](https://github.com/tlapinsk/byte-data-insights/blob/master/assets/Table%20Design.png "Extending Data Insights Example")
 
 ## Running the Notebooks  
 
