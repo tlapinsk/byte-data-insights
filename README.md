@@ -104,6 +104,26 @@ What time of day do customers typically purchase items? Looks like stocking the 
 |   Afternoon     |  274805  |
 |   Morning       |  226988  |
 
+**Most Lucrative Kiosks**  
+As a small bonus, I am including notes about the most lucrative kiosks.
+
+I believe the most lucrative kiosks would serve as great case studies for what makes a successful Byte Foods Kiosk. Potential insights include:
+* Creating company personas (or profiles) so you can identify high potential clients
+* Combining this with top selling products to optimize performance across kiosks
+
+| kiosk_id |  count  |
+|----------|---------|
+|   750    |  12295  |
+|   589    |  11533  |
+|   680    |  11119  |
+|   303    |  10190  |
+|   831    |  9468   |
+|   956    |  9307   |
+|   423    |  9120   |
+|   830    |  9060   |
+|   58	   |  8941   |
+|   955    |  8265   |
+
 ### `Data Feeder.ipynb`  
 The Data Feeder notebook serves as a small introduction for loading a database (Postgres in this case) with data from `items_purchased.csv` and `product_info.csv`. 
 
