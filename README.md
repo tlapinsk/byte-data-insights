@@ -4,7 +4,7 @@ Overview
 ---
 This repository contains files for a short assignment analyzing Byte Foods items purchased data and a tool to further extend these insights.
 
-There are 3 folders in this project
+There are 3 folders in this project:
 - [assets](https://github.com/tlapinsk/byte-data-insights/tree/master/assets)
 - [data](https://github.com/tlapinsk/byte-data-insights/tree/master/data)
 - [notebooks](https://github.com/tlapinsk/byte-data-insights/tree/master/notebooks)
@@ -13,7 +13,7 @@ The assets folder holds any images needed for the project.
 
 The data folder holds holds the items purchased data and "fake" product data used to exemplify how a second table could improve the quality of the original insights.
 
-The notebooks folder holders iPython notebooks, where I have curated my insights and written a small set of functions to process CSV files into Postgres.
+The notebooks folder includes iPython notebooks, where I have curated my insights and written a small set of functions to process CSV files into a Postgres database.
 
 This README file serves as a project write-up, details my thought process, and also includes potential improvements for a Production setting. 
 
@@ -30,7 +30,6 @@ Tasks:
 * Build a tool that can take in additional data as it becomes available and improve quality of the insights from above
 
 ### Dependencies  
-This project requires:
 * Python
 * Postgres
 * Jupyter Notebook
@@ -45,7 +44,7 @@ This project requires:
 
 ### `Insights.ipynb`  
 
-`Insights.ipynb` generates a few basic insights into the `items_purchased.csv`. There are more than three insights generated in the file - the three most important shown below:
+`Insights.ipynb` generates a few basic insights from the `items_purchased.csv`. There are more than three insights generated in the file - with the three most important shown below:
 
 **Top 10 Selling Products**  
 In the Insights file, I have generated the ~300 top selling products. To make this more concise, I have shortened it to 10 for the write-up. I'm curious what Product 4061 is.
@@ -115,7 +114,7 @@ Two important notes must be made about the data loading mechanism.
 Note: The second script utilizes a `copy_from` method instead of inserting the data. This is the recommended solution for loading data from a CSV file into Postgres using psycopg2.
 
 **Table Design**  
-Example of potential design around the `items_purchased` table. Exemplifies highly extensible model that is possible and great potential for data analysis.
+Example of potential design around the `items_purchased` table. This exemplifies a highly extensible model and shows great potential for further data analysis.
 
 ![alt text](https://github.com/tlapinsk/byte-data-insights/blob/master/assets/Table%20Design.png "Table Design Diagram")
 
@@ -123,9 +122,9 @@ Example of potential design around the `items_purchased` table. Exemplifies high
 Below are some key takeaways from this portion of the assignment:
 
 - Over time, as more data is added to the `purchases` table, we will be able to see trends over time. For example, how do things fluctuate month to month? Does seasonality make a difference in purchasing behavior?
-- The `product_info` table serves as a very small example of extensibility from the `purchases` table. If we were to setup a data warehouse, I would imagine there being a whole range of tables that extended insights from the `purchases` table. The design diagram above helps illustrate this
+- The `product_info` table serves as a very small example of extensibility from the `purchases` table. If we were to setup a data warehouse, I would imagine there being a whole range of tables that extended insights from the `purchases` table. The design diagram and tables with dotted outlines (see above) help illustrate this
 - The tool does not feel complete. As this is a small assignment, there is a lot of room for improvement. See the **Potential Improvements** section for more details
-- The chart generated at the end of the notebook is a small taste of one piece to a larger dashboard that could be built. This would allow business users to track KPIs and the like. See below
+- The chart generated at the end of the notebook is a small taste of what could be a larger dashboard. This would allow business users to track KPIs and the like. See below for the chart since it seems that GitHub did not load it properly.
 
 ![alt text](https://github.com/tlapinsk/byte-data-insights/blob/master/assets/Extending%20Insights%20Example.png "Extending Data Insights Example")
 
@@ -152,21 +151,21 @@ Please ensure you have Postgres running locally with a database named `postgres`
 
 Assuming you have already cloned the repository, unzipped the `items_purchased.tar.xz`, and have Jupyter Notebook running.
 
-Open `Data Feeder.ipynb` and replace your Postgres username where necessary (one in each cell).
+Open `Data Feeder.ipynb` and replace your Postgres username and password where necessary (one in each cell).
 
 You should then be able to Run All cells and monitor Postgres to see the tables being created / updated.
 
-As a note, the incremental load will dump the same data twice into the table since there is no new data provided. It is merely an example of how to load data incrementally.
+As a note, the incremental load will dump the same data twice into each table since there is no new data provided. It is merely an example of how to load data incrementally.
 
 ## Potential Improvements  
 The insights and tool provided are small examples, that by no means would be run in Production. They are helpful in providing examples of how I would load these CSVs into a database (assuming the CSVs lives locally on my computer).
 
-**Insights**  
+**Insights Improvements**  
 - Create front end web interface and dashboard for users
 - Explore Plotly or other similar tools to analyze data
 - Explore further insights from a larger Datawarehouse setting
 
-**Data Feeder**  
+**Data Feeder Improvements**  
 In a Production setting I would propose the following improvements:
 - Run an S3 bucket to host CSV files
 - Upon new CSV files being dumped into S3, fire AWS Lambda function to feed CSV file into Postgres (or any other database)
