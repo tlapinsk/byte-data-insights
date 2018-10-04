@@ -141,7 +141,7 @@ Example of potential design around the `items_purchased` table. This exemplifies
 **Key Takeaways**  
 Below are some key takeaways from this portion of the assignment:
 
-- Over time, as more data is added to the `purchases` table, we will be able to see trends over time. For example, how do things fluctuate month to month? Does seasonality make a difference in purchasing behavior?
+- As more data is added to the `purchases` table, we will be able to see trends over time. For example, how do things fluctuate month to month? Does seasonality make a difference in purchasing behavior?
 - The `product_info` table serves as a very small example of extensibility from the `purchases` table. If we were to setup a data warehouse, I would imagine there being a whole range of tables that extended insights from the `purchases` table. The design diagram and tables with dotted outlines (see above) help illustrate this
 - The tool does not feel complete. As this is a small assignment, there is a lot of room for improvement. See the **Potential Improvements** section for more details
 - The chart generated at the end of the notebook is a small taste of what could be a larger dashboard. This would allow business users to track KPIs and the like. See below for the chart since it seems that GitHub did not load it properly.
